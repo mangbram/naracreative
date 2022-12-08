@@ -1,0 +1,13 @@
+DATABASE
+
+CREATE DATABASE naracreativedb
+
+
+CREATE TABLE users(
+UserId Serial,
+Username varchar (32) not null unique,
+NamaLengkap text not null unique,
+Email text UNIQUE,
+Telepon varchar(16) not null unique,
+Password varchar (256) not null unique, 
+)
