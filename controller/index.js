@@ -1,1 +1,1 @@
-module.exports.controller = require('../controller')
+module.exports.controller = require('./controller')
