@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     res.status(responseHelper.status.error).json(err.message);
   }
 };
-//* register user begin //
+//* register user end //
 
 //* login user begin //
 const login = async (req, res, next) => {

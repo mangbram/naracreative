@@ -4,10 +4,13 @@ const bp = require('body-parser');
 const router = require('./routes');
 const { databaseConfig } = require('./database');
 require('dotenv').config();
+const cors = require("cors")
 
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
-
+app.use(cors({
+    origin: "*",
+}))
 databaseConfig.connect((err)=>{
     if(err){
         console.log(err)
