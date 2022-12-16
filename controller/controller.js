@@ -44,8 +44,8 @@ const login = async (req, res, next) => {
         } else if (result === true) {
           const token = jwt.sign(
             {
-              id: userData[0].id,
-              username: userData[0],
+              userid: userData[0].userid,
+              username: userData[0].username,
               email: userData[0].email,
               password: userData[0].password,
             },
@@ -54,7 +54,7 @@ const login = async (req, res, next) => {
           res.cookie("tokenJWT", token, { httpOnly: true, sameSite: "strict" });
           res.status(responseHelper.status.success).json({
             message: "User logged id",
-            id: userData[0].id,
+            userid: userData[0].userid,
             username: userData[0].username,
             email: userData[0].email,
             token: token,
@@ -87,5 +87,30 @@ const daftarUkm = async(req,res)=>{
     res.status(responseHelper.status.error).json(err.message);
   }
 }
-//*daftar ukm end//
-module.exports = { registerUser, login, daftarUkm };
+//*daftar ukm end*//
+
+//*logout start *//
+const logout = async(req, res, next)=>{
+  try{
+    res.clearCookie("tokenJWT").send("Cookie cleared")
+  } catch(err){
+    res.status(responseHelper.status.error).json(err.message);
+  }
+}
+//*logout end*//
+
+//*verify start*//
+const verify = async(req, res, next)=>{
+  try{
+    const email=req.data.email;
+    const userData = await service
+  } catch (err){
+    console.log(err.message);
+    res.status(responseHelper.status.error).json(err.message);
+  }
+}
+//*verify end*//
+
+
+module.exports = { registerUser, login, daftarUkm, logout };
+

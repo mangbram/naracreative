@@ -20,7 +20,7 @@ const login = async (email) => {
     const query = `SELECT * FROM users WHERE email=$1`;
     const result = await databaseQuery(query, [email]);
     if (!result) {
-      throw new Error("Error username didn't match");
+      throw new Error("Error email didn't match");
     }
     return result.rows;
   } catch (err) {
@@ -33,6 +33,17 @@ const daftarUkm = async (userid, ukmid, prodiid, fakultasid) =>{
   try{
     const query = `INSERT INTO record_ukm VALUES(DEFAULT,$1,$2,$3,$4)`;
     const result = await databaseQuery(query,[record_ukmid, userid, ukmid, prodiid, fakultasid])
+  } catch (err){
+    console.log(err);
+    return err;
+  }
+}
+
+const verify = async (email) =>{
+  try{
+    const query = `SELECT * FROM users WHERE email =$1`;
+    const result  = await databaseQuery(query,[email])
+    return result.rows;
   } catch (err){
     console.log(err);
     return err;
