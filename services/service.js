@@ -1,8 +1,8 @@
 const { databaseQuery } = require("../database");
 
-const addUser = async (username, email, password) => {
+const addUser = async (username, email, password, ) => {
   try {
-    const query = "INSERT INTO users VALUES(DEFAULT, $1,$2,$3)";
+    const query = "INSERT INTO users VALUES(DEFAULT, $1,$2,$3, 'GUEST')";
     const result = await databaseQuery(query, [username, email, password]);
     if (!result) {
       throw new Error("Error adding user");
@@ -29,7 +29,17 @@ const login = async (email) => {
   }
 };
 
+const daftarUkm = async (userid, ukmid, prodiid, fakultasid) =>{
+  try{
+    const query = `INSERT INTO record_ukm VALUES(DEFAULT,$1,$2,$3,$4)`;
+    const result = await databaseQuery(query,[record_ukmid, userid, ukmid, prodiid, fakultasid])
+  } catch (err){
+    console.log(err);
+    return err;
+  }
+}
 module.exports = {
   addUser,
   login,
+  daftarUkm,
 };

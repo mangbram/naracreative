@@ -13,4 +13,9 @@ const login =[
   body("password").isLength({ min: 8 }),
   validator
 ]
-module.exports = { addUser, login };
+
+const daftarUkm=[
+  validator
+]
+
+module.exports = { addUser, login, daftarUkm };

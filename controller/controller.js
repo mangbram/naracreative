@@ -11,10 +11,10 @@ SECRET = process.env.SECRET;
 
 //* register user begin //
 const registerUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password} = req.body;
   try {
     const hashedPass = await bcrypt.hash(password, 10);
-    const user = await service.addUser(username, email, hashedPass);
+    const user = await service.addUser(username, email, hashedPass, 'GUEST');
     if (user instanceof Error) {
       throw new Error(user);
     }
@@ -71,5 +71,21 @@ const login = async (req, res, next) => {
     res.status(responseHelper.status.error).json({ message: "Database error" });
   }
 };
+//*  login user end //
 
-module.exports = { registerUser, login };
+//*daftar ukm begin//
+const daftarUkm = async(req,res)=>{
+  const {userid, ukmid, prodiid, fakultasid} = req.body;
+  try{
+    const ukm = await service.addukm(userid, ukmid, prodiid, fakultasid);
+    if (ukm instanceof Error){
+      throw new Error(ukm);
+    }
+    console.log(ukm);
+    res.status(responseHelper.status.success).json(userid, ukmid, prodiid, fakultasid);
+  } catch(err){
+    res.status(responseHelper.status.error).json(err.message);
+  }
+}
+//*daftar ukm end//
+module.exports = { registerUser, login, daftarUkm };

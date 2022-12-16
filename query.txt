@@ -11,3 +11,54 @@ Email text UNIQUE,
 Telepon varchar(16) not null unique,
 Password varchar (256) not null unique, 
 )
+
+create TABLE Ukm(
+UkmId serial,
+Kategori text,
+Nama text not null,
+);
+
+Create TABLE KategoriUKM(
+	KategoriID serial,
+	Nama text not null,
+);
+
+CREATE TABLE UserUkm(
+	UserUkmID serial,
+	Kategori,
+	Nama,
+	User,
+):
+
+NON Kategori
+CREATE TABLE Ukm(
+	UkmId serial,
+	Kategori text,
+	Nama text
+);
+
+CREATE TABLE UserUkm(
+	UserUKMId serial,
+	Users
+	Ukm
+);
+
+
+
+
+CREATE TABLE Prodi(
+	ProdiId serial,
+	FakultasID integer,
+	NamaProdi text
+)
+
+CREATE TABLE Fakultas(
+	FakultasID serial,
+	NamaFakultas text
+)
+
+INSERT INTO Fakultas(FakultasID,NamaFakultas)
+VALUES (DEFAULT, 'TEKNIK');
+
+INSERT INTO Prodi(ProdiID, FakultasID, NamaProdi)
+VALUES (DEFAULT, 4, 'Sipil');
