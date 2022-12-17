@@ -9,6 +9,8 @@ router.route("/register").post(validation.addUser, controller.registerUser);
 router.route("/login").post(validation.login, controller.login);
 
 router.route("/ukm").post(validation.daftarUkm, controller.daftarUkm);
+
+router.route("/logout").post(controller.logout);
 // router.post('/login', userController.login)
 
 // router.post('/logout', Auth.verifyToken, userController.logout)
